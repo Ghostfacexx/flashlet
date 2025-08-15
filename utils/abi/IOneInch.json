@@ -1,0 +1,22 @@
+[
+  {
+    "name": "swap",
+    "type": "function",
+    "stateMutability": "payable",
+    "inputs": [
+      { "name": "executor", "type": "address" },
+      { "name": "desc", "type": "tuple", "components": [
+        { "name": "srcToken", "type": "address" },
+        { "name": "dstToken", "type": "address" },
+        { "name": "srcReceiver", "type": "address" },
+        { "name": "dstReceiver", "type": "address" },
+        { "name": "amount", "type": "uint256" },
+        { "name": "minReturnAmount", "type": "uint256" },
+        { "name": "flags", "type": "uint256" },
+        { "name": "permit", "type": "bytes" }
+      ]},
+      { "name": "data", "type": "bytes" }
+    ],
+    "outputs": [{ "name": "", "type": "uint256" }]
+  }
+]

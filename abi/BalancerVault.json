@@ -1,0 +1,16 @@
+[
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "poolId", "type": "bytes32" },
+      { "internalType": "uint256", "name": "amount", "type": "uint256" },
+      { "internalType": "address[]", "name": "assets", "type": "address[]" },
+      { "internalType": "bytes", "name": "userData", "type": "bytes" }
+    ],
+    "name": "queryBatchSwap",
+    "outputs": [
+      { "internalType": "int256[]", "name": "", "type": "int256[]" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

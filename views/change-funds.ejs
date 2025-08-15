@@ -1,0 +1,28 @@
+<!-- views/change-funds.ejs -->
+<!DOCTYPE html>
+<html lang="<%= language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= t('option_2') %></title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        form { display: flex; flex-direction: column; }
+        label { margin-bottom: 10px; }
+        input { margin-bottom: 10px; padding: 5px; }
+        button { padding: 10px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <%- include('header') %>
+    <div class="container">
+        <form action="/change-funds" method="post">
+            <label for="new_funds"><%= t('enter_new_funds') %></label>
+            <input type="number" id="new_funds" name="new_funds" step="0.01" required>
+            <button type="submit"><%= t('submit') %></button>
+        </form>
+    </div>
+    <%- include('footer') %>
+</body>
+</html>

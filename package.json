@@ -1,0 +1,36 @@
+{
+  "name": "flash-arbitrage-bot",
+  "version": "1.0.0",
+  "description": "Polygon flash loan arbitrage bot",
+  "main": "bot.js",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deploy.js --network polygon"
+  },
+  "dependencies": {
+    "@aave/core-v3": "1.19.3",
+    "@openzeppelin/contracts": "^4.9.6",
+    "axios": "^1.9.0",
+    "bignumber.js": "^9.3.0",
+    "blessed": "^0.1.81",
+    "body-parser": "^2.2.0",
+    "dotenv": "^16.6.1",
+    "ejs": "^3.1.10",
+    "ethers": "^5.8.0",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "node-cron": "^4.2.1",
+    "path": "^0.12.7",
+    "readline": "^1.3.0",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-verify": "^2.0.14",
+    "@nomiclabs/hardhat-ethers": "2.2.3",
+    "hardhat": "^2.24.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="<%= language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Trades</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        body { font-family: monospace; background-color: #f0f0f0; padding: 20px; }
+        #logs { white-space: pre-wrap; border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: scroll; }
+    </style>
+</head>
+<body>
+    <h1>Real-Time Bot Trades</h1>
+    <div id="logs"></div>
+    <script>
+        const socket = io();
+        socket.on('log', function(msg) {
+            const logsDiv = document.getElementById('logs');
+            logsDiv.innerHTML += msg + '<br>';
+            logsDiv.scrollTop = logsDiv.scrollHeight;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<%- include('header') %>
+<div class="container">
+    <h2><%= learningMode %></h2>
+    <table>
+        <tr><th><%= t('learning_mode') %></th><td></td></tr>
+        <tr><td><%= t('starting_balance') %></td><td><%= learningStarting.toFixed(2) %> EUR</td></tr>
+        <tr><td><%= t('current_balance') %></td><td><%= learningBalance.toFixed(2) %> EUR</td></tr>
+        <tr><td><%= t('total_gain_loss') %></td><td><%= learningGain.toFixed(2) %> EUR</td></tr>
+        <tr><td><%= t('accumulated_taxes') %></td><td><%= learningTaxes.toFixed(2) %> EUR</td></tr>
+        <tr><td><%= t('last_daily_profit_gross') %></td><td><%= learningGross.toFixed(2) %> EUR</td></tr>
+        <tr><td class="highlight"><%= t('actual_daily_profit_net') %></td><td class="highlight"><%= learningNet.toFixed(2) %> EUR</td></tr>
+    </table>
+
+    <h2><%= adjustableMode %></h2>
+    <table>
+        <tr><th><%= t('adjustable_mode') %></th><td></td></tr>
+        <tr><td><%= t('starting_balance') %></td><td><%= adjustableStarting.toFixed(2) %> EUR</td></tr>
+        <tr><td><%= t('current_balance') %></td><td><%= adjustableBalance.toFixed(2) %> EUR</td></tr>
+        <tr><td><%= t('total_gain_loss') %></td><td><%= adjustableGain.toFixed(2) %> EUR</td></tr>
+        <tr><td><%= t('accumulated_taxes') %></td><td><%= adjustableTaxes.toFixed(2) %> EUR</td></tr>
+        <tr><td><%= t('last_daily_profit_gross') %></td><td><%= adjustableGross.toFixed(2) %> EUR</td></tr>
+        <tr><td class="highlight"><%= t('actual_daily_profit_net') %></td><td class="highlight"><%= adjustableNet.toFixed(2) %> EUR</td></tr>
+    </table>
+
+    <h2><%= total %></h2>
+    <table>
+        <tr><th><%= t('total') %></th><td></td></tr>
+        <tr><td><%= t('starting_balance') %></td><td><%= totalStarting.toFixed(2) %> EUR</td></tr>
+        <tr><td><%= t('current_balance') %></td><td><%= totalCurrent.toFixed(2) %> EUR</td></tr>
+        <tr><td><%= t('total_gain_loss') %></td><td><%= totalGain.toFixed(2) %> EUR</td></tr>
+        <tr><td><%= t('accumulated_taxes') %></td><td><%= totalTaxes.toFixed(2) %> EUR</td></tr>
+        <tr><td><%= t('total_turnover') %></td><td><%= totalTurnover.toFixed(2) %> EUR</td></tr>
+    </table>
+    <a href="/" class="back-btn"><%= t('menu') %></a>
+</div>
+<%- include('footer') %>

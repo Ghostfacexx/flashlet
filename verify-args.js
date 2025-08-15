@@ -1,0 +1,10 @@
+// verify-args.js
+module.exports = [
+  "0xa97684ead0e402dC232d5A977953DF7ECBaB3CDb", // AAVE_ADDRESS_PROVIDER
+  [
+    "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+    "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
+    "0x3B2b44Cd7F7C1f34ee1F19d3725f1994efcB72E5"
+  ], // routers[]
+  "10000000000000000" // minProfit
+];

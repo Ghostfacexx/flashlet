@@ -1,0 +1,44 @@
+[
+  {
+    "inputs": [
+      {
+        "components": [
+          { "internalType": "address", "name": "token", "type": "address" },
+          { "internalType": "uint256", "name": "amount", "type": "uint256" },
+          { "internalType": "address", "name": "routerIn", "type": "address" },
+          { "internalType": "address", "name": "routerOut", "type": "address" }
+        ],
+        "internalType": "struct MultiPairFlashArbitrage.SwapData",
+        "name": "swap",
+        "type": "tuple"
+      }
+    ],
+    "name": "requestFlashLoan",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "token0", "type": "address" },
+      { "internalType": "address", "name": "token1", "type": "address" },
+      { "internalType": "address", "name": "token2", "type": "address" },
+      { "internalType": "address", "name": "router0", "type": "address" },
+      { "internalType": "address", "name": "router1", "type": "address" },
+      { "internalType": "address", "name": "router2", "type": "address" }
+    ],
+    "name": "executeTriangleArbitrage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "minProfit",
+    "outputs": [
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

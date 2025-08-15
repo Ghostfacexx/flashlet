@@ -1,0 +1,31 @@
+<!-- views/start-bot-confirm.ejs -->
+<!DOCTYPE html>
+<html lang="<%= language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= t('option_2') %> - <%= t('confirm') %></title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        form { display: flex; flex-direction: column; }
+        label { margin-bottom: 10px; }
+        button { padding: 10px; background-color: #007bff; color: white; border: none; cursor: pointer; margin-right: 10px; }
+        .buttons { display: flex; }
+    </style>
+</head>
+<body>
+    <%- include('header') %>
+    <div class="container">
+        <p><%= output %></p>
+        <p><%= t('start_bot_now') %></p>
+        <form action="/start-bot" method="post">
+            <div class="buttons">
+                <button type="submit" name="confirm" value="yes"><%= t('yes') %></button>
+                <button type="submit" name="confirm" value="no"><%= t('no') %></button>
+            </div>
+        </form>
+    </div>
+    <%- include('footer') %>
+</body>
+</html>

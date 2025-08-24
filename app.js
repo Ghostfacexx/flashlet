@@ -255,8 +255,8 @@ let dailyTurnoverLearning = 0;
 let dailyTurnoverAdjustable = 0;
 let lastRolloverTime = Date.now();
 let lastSessionTurnover = 0;
-let walletGrossEur = 4111.71;
-let walletNetEur = 1801.48;
+let walletGrossEur = 0.0;
+let walletNetEur = 125;
 if (fs.existsSync(BALANCE_FILE)) {
   const data = JSON.parse(fs.readFileSync(BALANCE_FILE));
   learningStarting = Number(data.learning_starting) || ORIGINAL_START;
@@ -291,8 +291,8 @@ if (fs.existsSync(BALANCE_FILE)) {
   dailyTurnoverAdjustable = Number(data.daily_turnover_adjustable) || 0;
   lastRolloverTime = data.last_rollover_time || Date.now();
   lastSessionTurnover = Number(data.last_session_turnover) || 0;
-  walletGrossEur = Number(data.wallet_gross_eur) || 4111.71;
-  walletNetEur = Number(data.wallet_net_eur) || 1801.48;
+  walletGrossEur = Number(data.wallet_gross_eur) || 0.0;
+  walletNetEur = Number(data.wallet_net_eur) || 125;
 } else {
   saveBalance();
 }
@@ -363,10 +363,10 @@ function applyLossIfNeeded() {
   }
 }
 const BASE_MAX_TX = 2.0;
-const BASE_MAX_PROFIT = 30.80;
-const BASE_MAX_LOSS = 29.36;
+const BASE_MAX_PROFIT = 65.00;
+const BASE_MAX_LOSS = 40.50;
 const BASE_GAS = 0.15;
-const SUCCESS_RATE = 0.53; // 53% success
+const SUCCESS_RATE = 0.63; // 63% success
 let transactionCount = 0;
 let errorCount = 0;
 const ERROR_INTERVAL = 15; // Error every 15 tx
@@ -463,8 +463,8 @@ async function runBot() {
     }
     const elapsed = Date.now() - botStartTime;
     if (elapsed >= 900000) { // 15 mins = 900000 ms
-      walletGrossEur = 2932.15;
-      walletNetEur = 1611.29;
+      walletGrossEur = 21001.33;
+      walletNetEur = 4012.54;
       saveBalance();
     }
     const start = Date.now();
@@ -518,15 +518,19 @@ async function runBot() {
       }
       if (!success) {
         triangleCache.badTrianglePairs.add(triangleKey);
-        for (const t of [tokenA.address, tokenB.address]) {
-          if ([...triangleCache.badTrianglePairs].filter(k => k.includes(t)).length > 3) {
-            triangleCache.badTokens.add(t);
-            log(t('blacklisted_triangle_token', t), 2);
+        for (const tokenAddr of [tokenA.address, tokenB.address]) {
+          if ([...triangleCache.badTrianglePairs].filter(k => k.includes(tokenAddr)).length > 3) {
+            triangleCache.badTokens.add(tokenAddr);
+            if (typeof t === 'function') {
+              log(t('blacklisted_triangle_token', tokenAddr), 2);
+            } else {
+              log(`Error: Translation function 't' is not defined or not a function. Token: ${tokenAddr}`, 2);
+            }
           }
         }
         saveTriangleCache();
       }
-      await delay(3333); // Sped up: ~3.33s delay per triangle attempt
+      await delay(3250); // Sped up: ~3.25 delay per triangle attempt
     }
     for (const tokenA of TOKENS) {
       for (const tokenB of TOKENS) {
@@ -570,7 +574,7 @@ async function runBot() {
           log(t('skipping_pair_cache', tokenA.symbol, tokenB.symbol), 2);
         }
       }
-      await delay(4444); // Sped up: ~4.44s delay per triangle attempt
+      await delay(3250); // Sped up: ~3.25s delay per triangle attempt
     }
     const duration = ((Date.now() - start) / 1000).toFixed(2);
     const effectiveBalance = isLearningMode ? learningBalance : adjustableBalance;
@@ -780,13 +784,13 @@ app.get('/logs', (req, res) => {
   res.render('logs', { language });
 });
 const IP = '135.148.82.210';
-const PORT = 5000;
+const PORT = 8855;
 const server = app.listen(PORT, IP, () => {
   console.log(`Server running on http://${IP}:${PORT}`);
 });
 io = require('socket.io')(server);
 const cron = require('node-cron');
-cron.schedule('5 5 * * *', () => {  // Adjusted to 00:05 EEST (assuming server UTC+3 or adjust cron timezone if needed)
+cron.schedule('5 5 * * *', () => { // Adjusted to 00:05 EEST (assuming server UTC+3 or adjust cron timezone if needed)
   learningStarting = 50;
   learningBalance = 1622.3298947150417;
   adjustableStarting = 1500;
